@@ -1,0 +1,154 @@
+{
+    "success": true,
+    "request_id": "ba1263e3-cfd1-4e31-be7b-a3952a7116a5",
+    "image_id": "this-is-the-image-id",
+    "is_clothing": true,
+    "result": {
+        "item_name": "Classic Navy Blue Dress Shirt",
+        "item_description": "A sleek, long-sleeved navy blue dress shirt featuring a button-down front and a structured collar, crafted for a polished and versatile look suitable for formal and business settings.",
+        "is_clothing": true,
+        "item_type": "dress shirt",
+        "visibility_score": 10,
+        "gender_target": "male",
+        "category": "top_wear",
+        "sub_category": "dress shirts",
+        "fabric_type": [
+            "cotton blend"
+        ],
+        "colors": [
+            "navy blue"
+        ],
+        "style": [
+            "classic",
+            "business formal",
+            "minimalist modern"
+        ],
+        "formality": "business formal",
+        "weather_appropriateness": [
+            "cool autumn evenings",
+            "air-conditioned offices",
+            "mild weather"
+        ],
+        "occasions": [
+            "daily work meetings",
+            "job interviews",
+            "formal dinner parties",
+            "client meetings presentations",
+            "networking events"
+        ],
+        "occasion_weight": {
+            "everyday_workwear": 5,
+            "remote_work_wfh": 3,
+            "job_interview": 5,
+            "formal_events": 4,
+            "casual_outings": 2,
+            "weekend_fits": 1,
+            "travel_transit_day": 3,
+            "beach_day_poolside": 1,
+            "vacation_mode": 2,
+            "date_night_dinner_out": 4,
+            "first_date": 3,
+            "birthday_celebration_look": 3,
+            "festival_cultural_event": 2,
+            "wedding_guest": 3,
+            "bridal_groomswear_event": 2,
+            "partywear_night_out": 2,
+            "creative_industry_workwear": 4,
+            "back_to_school_college": 3,
+            "gym_activewear": 1,
+            "lounge_homewear": 2,
+            "rainy_day_outfit": 3,
+            "cold_weather_outing": 3,
+            "hot_weather_outfit": 2,
+            "funeral_memorial": 3,
+            "errands_grocery_runs": 2,
+            "sporting_event_game_day": 1,
+            "fashion_crisis_emergency": 3,
+            "black_tie_events": 3,
+            "airport_travel_errands": 3,
+            "brunch_lunch_dates": 3,
+            "client_meetings_presentations": 5,
+            "festive_holidays": 2,
+            "religious_ceremonies_pooja": 2,
+            "picnic_outdoor_leisure": 2,
+            "maternity_wear_occasions": 1,
+            "adaptive_inclusive_occasions": 1,
+            "intimate_occasions": 2,
+            "medical_appointments": 3,
+            "spa_wellness_visits": 2,
+            "theater_concerts": 3,
+            "art_gallery_museum": 3,
+            "networking_events": 5,
+            "conferences_seminars": 5,
+            "graduation_ceremonies": 4,
+            "baby_shower_events": 2,
+            "engagement_parties": 3,
+            "anniversary_celebrations": 3,
+            "holiday_parties": 2,
+            "cocktail_events": 3,
+            "charity_galas": 3,
+            "outdoor_adventures": 1,
+            "camping_hiking": 1,
+            "winter_sports": 1,
+            "summer_sports": 1,
+            "professional_photoshoot": 4,
+            "casual_photoshoot": 3,
+            "school_parent_meetings": 4,
+            "kids_events_activities": 2,
+            "elderly_care_visits": 3,
+            "court_legal_proceedings": 4,
+            "job_shadowing": 4,
+            "volunteer_work": 3,
+            "community_service": 3,
+            "farmers_market_visits": 2
+        },
+        "fit": "tailored structured",
+        "condition": "brand new",
+        "comfort_level": "comfortable for short periods",
+        "versatility": 4,
+        "coordination": {
+            "pairs_well_with": [
+                "dark wash jeans",
+                "tailored trousers",
+                "formal blazers",
+                "leather dress shoes"
+            ],
+            "color_coordination": [
+                "neutral tones",
+                "grey",
+                "black",
+                "beige"
+            ],
+            "avoid_combining_with": [
+                "bright patterns",
+                "neon colors",
+                "casual sportswear"
+            ]
+        },
+        "cultural_context": [
+            "western professional",
+            "global business",
+            "modern corporate"
+        ],
+        "aesthetic": [
+            "minimalist clean lines",
+            "timeless classic",
+            "corporate professional"
+        ],
+        "special_features": [
+            "button-down front",
+            "structured collar"
+        ],
+        "layering_position": "base layer"
+    },
+    "processing_time_ms": 16541.101000000002,
+    "token_count": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    },
+    "cost": 0,
+    "enhanced": true,
+    "confidence": 1,
+    "reasoning": "LangChain structured output with enhanced chain-of-thought reasoning using OPENAI gpt-4.1-mini"
+}
