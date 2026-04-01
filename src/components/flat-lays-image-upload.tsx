@@ -5,7 +5,9 @@ import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 
 export default function FlatLaysImageUpload() {
 
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTk3MDU5M2Y1ODRiZTIxMDEwOGQxNzMiLCJlbWFpbCI6ImFzbGFtZGFkYTQxMDZAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiTWQiLCJsYXN0TmFtZSI6IkFzbGFtIiwicm9sZSI6InVzZXIiLCJpc09uYm9hcmRlZCI6dHJ1ZSwiaWF0IjoxNzcyNTI5NDU3LCJleHAiOjE3NzMxMzQyNTcsImF1ZCI6ImJlc3Bva2UtdXNlcnMiLCJpc3MiOiJiZXNwb2tlLWFpLXN0eWxpc3QifQ.irZhsPW4zx3gU2qarKS2-h_r-0iPgvwua3iOl4MlHQ8"
+    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGVlYTc3ZGE3NDA3OTQ5MTAyMWNjNWUiLCJlbWFpbCI6ImFzbGFtZGFkYTQxMDZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpc09uYm9hcmRlZCI6dHJ1ZSwiaWF0IjoxNzczMjIwMjA3LCJleHAiOjE3NzM4MjUwMDcsImF1ZCI6ImJlc3Bva2UtdXNlcnMiLCJpc3MiOiJiZXNwb2tlLWFpLXN0eWxpc3QifQ.WPMk8_9Cek-xQpbA2R0dVfvAjfTHiq_tTTHCbPZoaMY"
+
+    const BE_URL = "http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com";
 
     const [dataToSend, setDataToSend] = useState<{
         images: string[],
@@ -48,6 +50,8 @@ export default function FlatLaysImageUpload() {
         // TODO: DB Operation to save garment
         const garmentToSave = garments[itemIndex];
 
+        console.log("Saving garment:", garmentToSave);
+
         const newGarment = {
             "name": garmentToSave.metadata.name,
             "category": garmentToSave.metadata.category,
@@ -65,7 +69,7 @@ export default function FlatLaysImageUpload() {
             "primaryColor": garmentToSave.metadata.primaryColor || undefined
         }
 
-        const result = await fetch("http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com:5002/api/v2/flatlays/save-item", {
+        const result = await fetch(`${BE_URL}/api/v2/flatlays/save-item`, {
             method: "POST",
             body: JSON.stringify(newGarment),
             headers: {
@@ -131,7 +135,7 @@ export default function FlatLaysImageUpload() {
     };
 
     async function getBatchResults(batchId: string) {
-        const result = await fetch(`http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com:5002/api/v2/flatlays/batch-results/${batchId}`, {
+        const result = await fetch(`${BE_URL}/api/v2/flatlays/batch-results/${batchId}`, {
             headers: {
                 Authorization: token,
             }
@@ -152,7 +156,7 @@ export default function FlatLaysImageUpload() {
         // alert("Hello THere");
 
 
-        const res = await fetch("http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com:5002/api/v2/flatlays", {
+        const res = await fetch(`${BE_URL}/api/v2/flatlays`, {
             method: "POST",
             body: JSON.stringify(dataToSend),
             headers: {
@@ -183,7 +187,7 @@ export default function FlatLaysImageUpload() {
 
         console.log("Setting up socket for batchId:", batchId);
 
-        const socket = io("http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com:5002");
+        const socket = io(BE_URL);
         socket.emit("subscribe-flatlays", batchId);
 
         // Listen to progress
@@ -206,7 +210,7 @@ export default function FlatLaysImageUpload() {
 
         // Cleanup on unmount
         return () => {
-            socket.emit("unsubscribe", batchId);
+            socket.emit("unsubscribe-flatlays", batchId);
             socket.disconnect();
         };
     }, [batchId])
@@ -217,7 +221,7 @@ export default function FlatLaysImageUpload() {
         if (savedBatchId) {
 
             // Fetch latest progress from REST endpoint
-            fetch(`http://staging-infra-v2-alb-1219932791.ap-south-1.elb.amazonaws.com:5002/api/v2/flatlays/batch-progress/${savedBatchId}`, {
+            fetch(`${BE_URL}/api/v2/flatlays/batch-progress/${savedBatchId}`, {
                 headers: {
                     Authorization: token,
                 }
